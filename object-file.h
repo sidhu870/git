@@ -178,7 +178,7 @@ enum {
 	WRITE_OBJECT_FILE_SILENT = (1 << 1),
 };
 
-int write_object_file_flags(const void *buf, unsigned long len,
+int write_object_file_flags(const void *buf, size_t len,
 			    enum object_type type, struct object_id *oid,
 			    struct object_id *comapt_oid_in, unsigned flags);
 static inline int write_object_file(const void *buf, unsigned long len,
@@ -193,7 +193,7 @@ struct input_stream {
 	int is_finished;
 };
 
-int write_object_file_literally(const void *buf, unsigned long len,
+int write_object_file_literally(const void *buf, size_t len,
 				const char *type, struct object_id *oid,
 				unsigned flags);
 int stream_loose_object(struct input_stream *in_stream, size_t len,
@@ -232,7 +232,7 @@ int finalize_object_file_flags(const char *tmpfile, const char *filename,
 			       enum finalize_object_file_flags flags);
 
 void hash_object_file(const struct git_hash_algo *algo, const void *buf,
-		      unsigned long len, enum object_type type,
+		      size_t len, enum object_type type,
 		      struct object_id *oid);
 
 /* Helper to check and "touch" a file */
